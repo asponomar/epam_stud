@@ -1,14 +1,16 @@
 package ru.alpo.homework_2;
 
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        Equation equation_1 = new Equation(2, -6, 3);
-        Solving solvingEquation_1 = new Solving(equation_1);
 
-        Equation equation_2 = new Equation(1, 4, 4);
-        Solving solvingEquation_2 = new Solving(equation_2);
+        SquareEquation[] equations = new SquareEquation[3];
+        Random randomNumber = new Random();
+        for (int i = 0; i < equations.length; i++) {
+            equations[i] = new SquareEquation(randomNumber.nextInt(20) - 10, randomNumber.nextInt(20) - 10, randomNumber.nextInt(20) - 10);
+            equations[i].solving();
+        }
 
-        Equation equation_3 = new Equation(2, -5, 4);
-        Solving solvingEquation_3 = new Solving(equation_3);
     }
 }
