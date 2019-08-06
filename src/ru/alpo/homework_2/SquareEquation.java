@@ -1,13 +1,15 @@
 package ru.alpo.homework_2;
 
 public class SquareEquation {
-    private int a, b, c;
+    private static int a, b, c;
+    public static String equationIs = "The equation is: " + a + "x^2+" + b + "x+" + c + "=0";
 
     public SquareEquation(int a, int b, int c) {
         this.a = a;
         this.b = b;
         this.c = c;
-        System.out.printf("The equation is: %dx^2%+dx%+d=0 \n", a, b, c);
+        equationIs = "The equation is: " + a + "x^2+" + b + "x+" + c + "=0";
+        System.out.println(equationIs);
     }
 
     public void solving() {
@@ -51,6 +53,6 @@ public class SquareEquation {
     }
 
     public static void printRoots(double x1, double x2) {
-        System.out.println("X1 = " + x1 + ", X2 = " + x2 + "\n");
+        System.out.println("The roots are: X1 = " + x1 + ", X2 = " + x2 + "\n");
     }
 }
