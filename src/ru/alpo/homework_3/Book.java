@@ -3,34 +3,26 @@ package ru.alpo.homework_3;
 public class Book {
     private String name;
     private Author author;
-    private int iSBN;
+    private String iSBN;
 
-    public Book(String name, Author author) {
+    public Book(String name, Author author, String iSBN) {
         this.name = name;
         this.author = author;
+        this.iSBN = iSBN;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public int getiSBN() {
-        return iSBN;
-    }
-
-    public void setiSBN(int iSBN) {
+    public void setiSBN(String iSBN) {
         this.iSBN = iSBN;
+    }
+
+    @Override
+    public String toString() {
+        return author + " - "
+                + name
+                + ", ISBN: " + iSBN;
     }
 }
