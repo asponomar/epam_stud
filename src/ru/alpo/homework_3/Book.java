@@ -1,13 +1,27 @@
 package ru.alpo.homework_3;
 
-import java.util.Arrays;
-
 public class Book {
     private long id;
     private String name;
     private Author[] authors;
     private int publishYear;
     private int totalPages;
+    private BookOrigin bookOrigin;
+
+    enum BookOrigin {
+        PRINTED("This book was printed in typography"),
+        HANDWRITTEN("This book was handwritten");
+
+        private String description;
+
+        BookOrigin(String description) {
+            this.description = description;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+    }
 
     public long getId() {
         return id;
@@ -49,6 +63,14 @@ public class Book {
         this.totalPages = totalPages;
     }
 
+    public BookOrigin getBookOrigin() {
+        return bookOrigin;
+    }
+
+    public void setBookOrigin(BookOrigin bookOrigin) {
+        this.bookOrigin = bookOrigin;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -56,6 +78,20 @@ public class Book {
                 ", name = '" + name + '\'' +
                 ", publishYear = " + publishYear +
                 ", totalPages = " + totalPages +
+                ", " + bookOriginOut() +
                 '}';
     }
-}
+
+    public String bookOriginOut() {
+/*        switch (bookOrigin) {
+            case PRINTED:
+            case HANDWRITTEN: {
+                return bookOrigin.getDescription();
+            }
+            default:*/
+                return "Origin is unknown";
+        }
+
+    }
+
+

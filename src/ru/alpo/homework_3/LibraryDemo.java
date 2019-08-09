@@ -9,6 +9,19 @@ public class LibraryDemo {
     }
 
     private static void initData(Library library) {
+        for (int i = 0; i < 2; i++) {
+            InputAuthor inputAuthor = new InputAuthor();
+            inputAuthor.setName("Alexander");
+            inputAuthor.setLastName("One more Pushkin");
+            inputAuthor.setBirthYear(1799);
+            inputAuthor.setDeathYear(1837);
+            Author author = valueOf(inputAuthor);
+            library.addAuthor(author);
+        }
+        System.out.println(Storage.authorIndex);
+        System.out.println(Storage.authors.length);
+
+
         InputBook inputBook1 = new InputBook();
         inputBook1.setName("Zolotaya rybka");
         inputBook1.setPublishYear(2005);
@@ -43,8 +56,11 @@ public class LibraryDemo {
 
     private static Author valueOf(InputAuthor inputAuthor) {
         Author author = new Author();
+        author.setId(inputAuthor.getId());
+        author.setName(inputAuthor.getName());
         author.setLastName(inputAuthor.getLastName());
         author.setBirthYear(inputAuthor.getBirthYear());
+        author.setDeathYear(inputAuthor.getDeathYear());
         return author;
     }
 }

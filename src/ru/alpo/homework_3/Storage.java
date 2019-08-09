@@ -1,5 +1,7 @@
 package ru.alpo.homework_3;
 
+import java.util.Arrays;
+
 public class Storage {
     public static final int CAPACITY = 10;
     public static Book[] books = new Book[CAPACITY];
@@ -17,13 +19,8 @@ public class Storage {
     }
 
     public static void increaseAuthorsStorage() {
-
         Author[] authors = new Author[authorIndex + CAPACITY];
-        //System.arraycopy();
-        for (int i = 0; i < Storage.authors.length; i++) {
-            authors[i] = Storage.authors[i];
-            System.out.println();
-        }
+        System.arraycopy(Storage.authors, 0, authors, 0, Storage.authors.length);
         Storage.authors = authors;
     }
 
@@ -35,16 +32,12 @@ public class Storage {
         } else {
             authors[authorIndex] = author;
         }
-        Storage.increaseAuthorIndex();
+        increaseAuthorIndex();
     }
 
     public static void increaseBooksStorage() {
         Book[] books = new Book[bookIndex + CAPACITY];
-        //System.arraycopy();
-        for (int i = 0; i < Storage.books.length; i++) {
-            books[i] = Storage.books[i];
-            System.out.println();
-        }
+        System.arraycopy(Storage.books, 0, books, 0, Storage.books.length);
         Storage.books = books;
     }
 
