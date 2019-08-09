@@ -1,14 +1,11 @@
 package ru.alpo.homework_3;
 
-import java.util.Arrays;
-
-public class Author {
-    private Long id;
+public class InputAuthor {
+    private long id;
     private String name;
     private String lastName;
-    private int birthYear;
+    private Integer birthYear;
     private Integer deathYear;
-    private Book[] books;
 
     public long getId() {
         return id;
@@ -48,34 +45,5 @@ public class Author {
 
     public void setDeathYear(Integer deathYear) {
         this.deathYear = deathYear;
-    }
-
-    public Book[] getBooks() {
-        return books;
-    }
-
-    public void setBooks(Book[] books) {
-        this.books = books;
-    }
-
-    @Override
-    public String toString() {
-        return "Author{" +
-                "id =" + id +
-                ", name = '" + name + '\'' +
-                ", lastName = '" + lastName + '\'' +
-                ", birthYear = " + birthYear +
-                ", deathYear = " + deathYear +
-                '}';
-    }
-
-    public boolean isLiving() {
-        return deathYear == null;
-    }
-
-    public String lifeTime() {
-        if (isLiving()) {
-            return birthYear + " - now";
-        } else return birthYear + " - " + deathYear;
     }
 }

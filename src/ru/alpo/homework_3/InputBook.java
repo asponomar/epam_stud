@@ -1,11 +1,8 @@
 package ru.alpo.homework_3;
 
-import java.util.Arrays;
-
-public class Book {
+public class InputBook {
     private long id;
     private String name;
-    private Author[] authors;
     private int publishYear;
     private int totalPages;
 
@@ -25,14 +22,6 @@ public class Book {
         this.name = name;
     }
 
-    public Author[] getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(Author[] authors) {
-        this.authors = authors;
-    }
-
     public int getPublishYear() {
         return publishYear;
     }
@@ -47,15 +36,5 @@ public class Book {
 
     public void setTotalPages(int totalPages) {
         this.totalPages = totalPages;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id = " + id +
-                ", name = '" + name + '\'' +
-                ", publishYear = " + publishYear +
-                ", totalPages = " + totalPages +
-                '}';
     }
 }
