@@ -6,14 +6,14 @@ import ru.alpo.homework_5.book.Book;
 public final class Storage {
     public static final int CAPACITY = 10;
     public static Book[] books = new Book[CAPACITY];
-    public static int bookIndex = 0;
+    private static int bookIndex = 0;
 
     public static void increaseBookIndex() {
         bookIndex++;
     }
 
     public static Author[] authors = new Author[CAPACITY];
-    public static int authorIndex = 0;
+    private static int authorIndex = 0;
 
     public static void increaseAuthorIndex() {
         authorIndex++;
@@ -52,4 +52,39 @@ public final class Storage {
         }
         Storage.increaseBookIndex();
     }
+
+    public static int getAuthorsQuantity() {
+        return authorIndex;
+    }
+
+    public static int getBooksQuantity() {
+        return bookIndex;
+    }
+
+
+    public static Author searchAuthor(String lastName, String name) {
+        Author author = new Author();
+        author.setName(name);
+        author.setLastName(lastName);
+        for (int i = 0; i < authors.length; i++) {
+            if (author.equals(authors[i])) {
+                author = authors[i];
+            }
+        }
+        return author;
+    }
+
+    public static Book searchBook(String name) {
+        Book book = new Book();
+        return book;
+    }
+
+    public static void deleteAuthor(String lastName, String name) {
+        Author author = searchAuthor(lastName, name);
+    }
+
+    public static void deleteBook(String name) {
+        Book book = searchBook(name);
+    }
+
 }

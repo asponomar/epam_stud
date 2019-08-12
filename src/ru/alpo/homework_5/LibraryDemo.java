@@ -14,7 +14,7 @@ public class LibraryDemo {
     }
 
     private static void initData(Library library) {
-        for (int i = 0; i < 0; i++) {
+        for (int i = 0; i < 1; i++) {
             InputAuthor inputAuthor = new InputAuthor();
             inputAuthor.setName("Alexander");
             inputAuthor.setLastName("One more Pushkin");
