@@ -19,10 +19,25 @@ public final class Storage {
         authorIndex++;
     }
 
+
+    public static int getBookIndex() {
+        return bookIndex;
+    }
+
+    public static int getAuthorIndex() {
+        return authorIndex;
+    }
+
     public static void increaseAuthorsStorage() {
         Author[] authors = new Author[authorIndex + CAPACITY];
         System.arraycopy(Storage.authors, 0, authors, 0, Storage.authors.length);
         Storage.authors = authors;
+    }
+
+    public static void increaseBooksStorage() {
+        Book[] books = new Book[bookIndex + CAPACITY];
+        System.arraycopy(Storage.books, 0, books, 0, Storage.books.length);
+        Storage.books = books;
     }
 
     public static void addAuthor(Author author) {
@@ -36,12 +51,6 @@ public final class Storage {
         increaseAuthorIndex();
     }
 
-    public static void increaseBooksStorage() {
-        Book[] books = new Book[bookIndex + CAPACITY];
-        System.arraycopy(Storage.books, 0, books, 0, Storage.books.length);
-        Storage.books = books;
-    }
-
     public static void addBook(Book book) {
         book.setId(bookIndex + 1);
 
@@ -53,38 +62,74 @@ public final class Storage {
         Storage.increaseBookIndex();
     }
 
-    public static int getAuthorsQuantity() {
-        return authorIndex;
+    public static void printAuthorsQuantity() {
+        System.out.println(getAuthorIndex());
     }
 
-    public static int getBooksQuantity() {
-        return bookIndex;
+    public static void printBooksQuantity() {
+        System.out.println(getBookIndex());
     }
 
-
-    public static Author searchAuthor(String lastName, String name) {
+    public class Searcher {
         Author author = new Author();
-        author.setName(name);
-        author.setLastName(lastName);
-        for (int i = 0; i < authors.length; i++) {
-            if (author.equals(authors[i])) {
-                author = authors[i];
+        Book book = new Book();
+
+        private Author searcher(String lastName, String name) {
+            author.setName(name);
+            author.setLastName(lastName);
+            for (int i = 0; i < authors.length; i++) {
+                if (author.getName().equals(authors[i].getName()) && author.getLastName().equals(authors[i].getLastName())) {
+                    author = authors[i];
+                }
+            }
+            return author;
+        }
+
+        private boolean foundAuthor() {
+            return author != null;
+        }
+
+        public void searchAuthor(String lastName, String name) {
+            Author authorFound = searcher(author.getLastName(), author.getName());
+            if (foundAuthor()) {
+                System.out.println(authorFound.toString());
+            } else {
+                System.out.println("Author " + author.getLastName() + " " + author.getName() + " not found");
             }
         }
-        return author;
+
+        private Book searcher(String name) {
+            book.setName(name);
+
+            for (int i = 0; i < books.length; i++) {
+                if (book.getName().equals(books[i].getName())) {
+                    book = books[i];
+                }
+            }
+            return book;
+        }
+
+        private boolean foundBook() {
+            return book != null;
+        }
+
+        public void searchBook(String name) {
+            Book bookFound = searcher(book.getName());
+            if (foundBook()) {
+                System.out.println(bookFound.toString());
+            } else {
+                System.out.println("Book " + book.getName() + " not found");
+            }
+        }
     }
 
-    public static Book searchBook(String name) {
-        Book book = new Book();
-        return book;
-    }
-
-    public static void deleteAuthor(String lastName, String name) {
-        Author author = searchAuthor(lastName, name);
+    public void deleteAuthor(String lastName, String name) {
+        Searcher searcher = new Searcher();
+        searcher.searchAuthor(lastName, name);
     }
 
     public static void deleteBook(String name) {
-        Book book = searchBook(name);
+//        Book book = searchBook(name);
     }
 
 }

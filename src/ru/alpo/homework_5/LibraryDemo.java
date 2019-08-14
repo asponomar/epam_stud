@@ -11,6 +11,12 @@ public class LibraryDemo {
         initData(library);
         printAuthors();
         printBooks();
+        Storage.Searcher searcher = new Storage().new Searcher();
+//        searcher.searchAuthor("Pushkin","Alexander");
+//        searcher.searchBook("Zolotaya rybka");
+        Storage.printAuthorsQuantity();
+        Storage.printBooksQuantity();
+
     }
 
     private static void initData(Library library) {
@@ -41,6 +47,7 @@ public class LibraryDemo {
 
         InputAuthor inputAuthor1 = new InputAuthor();
         inputAuthor1.setLastName("Pushkin");
+        inputAuthor1.setName("Alexander");
         inputAuthor1.setBirthYear(1799);
         Author author = valueOfAuthor(inputAuthor1);
         author.setBooks(new Book[]{book1, book2});
