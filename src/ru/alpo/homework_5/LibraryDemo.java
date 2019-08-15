@@ -1,22 +1,27 @@
 package ru.alpo.homework_5;
 
 import ru.alpo.homework_5.author.Author;
+import ru.alpo.homework_5.author.AuthorRepo;
+import ru.alpo.homework_5.author.AuthroRepoArrayImpl;
 import ru.alpo.homework_5.author.InputAuthor;
 import ru.alpo.homework_5.book.*;
-import static ru.alpo.homework_5.Library.*;
+
 
 public class LibraryDemo {
     public static void main(String[] args) {
-        Library library = new Library();
-        initData(library);
-        printAuthors();
-        printBooks();
-        Storage.printAuthorsQuantity();
-        Storage.printBooksQuantity();
+        BookRepo bookRepo = new BookRepoArrayRepo();
+        AuthorRepo authorRepo = new AuthroRepoArrayImpl();
+
+        initData(bookRepo, authorRepo);
+        authorRepo.print();
+        bookRepo.print();
+        System.out.println(authorRepo.count());
+        System.out.println(bookRepo.count());
+//        authorRepo.delete();
 
     }
 
-    private static void initData(Library library) {
+    private static void initData(BookRepo bookRepo, AuthorRepo authorRepo) {
         for (int i = 0; i < 1; i++) {
             InputAuthor inputAuthor = new InputAuthor();
             inputAuthor.setName("Alexander");
@@ -24,7 +29,7 @@ public class LibraryDemo {
             inputAuthor.setBirthYear(1799);
             inputAuthor.setDeathYear(1837);
             Author author = valueOfAuthor(inputAuthor);
-            addAuthor(author);
+            authorRepo.add(author);
         }
 /*        System.out.println(Storage.authorIndex);
         System.out.println(Storage.authors.length);*/
@@ -52,9 +57,9 @@ public class LibraryDemo {
         book1.setAuthors(new Author[]{author});
         book2.setAuthors(new Author[]{author});
 
-        addBook(book1);
-        addBook(book2);
-        addAuthor(author);
+        bookRepo.add(book1);
+        bookRepo.add(book2);
+        authorRepo.add(author);
     }
 
     private static Book valueOfForPrintedBook(InputBook inputBook) {

@@ -3,6 +3,8 @@ package ru.alpo.homework_5;
 import ru.alpo.homework_5.author.Author;
 import ru.alpo.homework_5.book.Book;
 
+import java.util.Arrays;
+
 public final class Storage {
     public static final int CAPACITY = 10;
     public static Book[] books = new Book[CAPACITY];
@@ -161,6 +163,33 @@ public final class Storage {
          *  [3] = NULL
          */
         authors = newAuthors;
+    }
+
+    public static Author searchAuthorById(Long searchAuthorId) {
+        Author author = new Author();
+        for (int i = 0; i < authors.length; i++) {
+            if (searchAuthorId.equals(author.getId())) {
+                author = authors[i];
+            }
+        }
+        return author;
+    }
+
+    public static void searchAuthorByLastName(String searchLastName) {
+        for (Author author : authors) {
+            if (searchLastName.equals(author.getLastName())) {
+                System.out.println(author.toString());
+            } else System.out.println("The author " + searchLastName + " not found.");
+        }
+    }
+
+    public static void sortAuthorsByLastName() {
+        for (int i = authors.length - 1; i > 0; i--)
+            for (int j = 0; j < i; j++) {
+                String[] lastNamesForSort = {authors[i].getLastName(),
+                        authors[i + 1].getLastName()};
+                Arrays.sort(lastNamesForSort);
+            }
     }
 
 
