@@ -10,7 +10,7 @@ public class Author {
     private Integer deathYear;
     private Book[] books;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

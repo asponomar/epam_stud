@@ -11,9 +11,6 @@ public class LibraryDemo {
         initData(library);
         printAuthors();
         printBooks();
-        Storage.Searcher searcher = new Storage().new Searcher();
-//        searcher.searchAuthor("Pushkin","Alexander");
-//        searcher.searchBook("Zolotaya rybka");
         Storage.printAuthorsQuantity();
         Storage.printBooksQuantity();
 

@@ -3,14 +3,14 @@ package ru.alpo.homework_5.book;
 import ru.alpo.homework_5.author.Author;
 
 public class Book {
-    protected long id;
+    protected Long id;
     protected String name;
     protected Author[] authors;
     protected int publishYear;
     protected int totalPages;
     protected BookGenre bookGenre;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

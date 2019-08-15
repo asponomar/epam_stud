@@ -38,21 +38,4 @@ public class Library {
     private static String getBookAsStr(Book book) {
         return book.toString();
     }
-
-    public static void printBooksInfo(Book book) {
-    }
-
-    public static void printSortedAuthors() {
-    }
-
-    public static void printSortedBooks() {
-    }
-
-    public static void deleteAuthor(String lastName, String name) {
-        Storage.deleteAuthor(lastName, name);
-    }
-
-    public static void deleteBook(String name) {
-        Storage.deleteBook(name);
-    }
 }
