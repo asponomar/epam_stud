@@ -22,4 +22,9 @@ public class BookRepoList implements BookRepo {
     public Long add(Book book) {
         return null;
     }
+
+    @Override
+    public Book[] findBooksByAuthorAsArray(long id) {
+        return new Book[0];
+    }
 }

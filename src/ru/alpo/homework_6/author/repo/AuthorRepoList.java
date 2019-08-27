@@ -22,4 +22,10 @@ public class AuthorRepoList implements AuthorRepo {
     public Long add(Author author) {
         return null;
     }
+
+    @Override
+    public Author[] findAuthorsByBook(long id) {
+        return new Author[0];
+    }
+
 }

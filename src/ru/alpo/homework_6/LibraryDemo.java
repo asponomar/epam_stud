@@ -4,6 +4,7 @@ import ru.alpo.homework_6.author.domain.Author;
 import ru.alpo.homework_6.author.repo.AuthorRepo;
 import ru.alpo.homework_6.author.repo.AuthorRepoArray;
 import ru.alpo.homework_6.author.InputAuthor;
+import ru.alpo.homework_6.author.service.*;
 import ru.alpo.homework_6.book.*;
 import ru.alpo.homework_6.book.domain.Book;
 import ru.alpo.homework_6.book.domain.BookGenre;
@@ -11,6 +12,7 @@ import ru.alpo.homework_6.book.domain.HandWrittenBook;
 import ru.alpo.homework_6.book.domain.PrintedBook;
 import ru.alpo.homework_6.book.repo.BookRepo;
 import ru.alpo.homework_6.book.repo.BookRepoArray;
+import ru.alpo.homework_6.book.service.*;
 
 
 public class LibraryDemo {
@@ -18,7 +20,9 @@ public class LibraryDemo {
         BookRepo bookRepo = new BookRepoArray();
         AuthorRepo authorRepo = new AuthorRepoArray();
 
-        initData(bookRepo, authorRepo);
+        AuthorService authorService = new AuthroServiceImpl(authorRepo, bookRepo);
+        BookService bookService = new BookServiceImpl(bookRepo, authorRepo);
+        initData(bookService, authorService);
         authorRepo.print();
         bookRepo.print();
         System.out.println(authorRepo.count());
@@ -27,15 +31,15 @@ public class LibraryDemo {
 
     }
 
-    private static void initData(BookRepo bookRepo, AuthorRepo authorRepo) {
-        for (int i = 0; i < 1; i++) {
+    private static void initData(BookService bookService, AuthorService authorService) {
+        for (int i = 0; i < 21; i++) {
             InputAuthor inputAuthor = new InputAuthor();
             inputAuthor.setName("Alexander");
             inputAuthor.setLastName("One more Pushkin");
             inputAuthor.setBirthYear(1799);
             inputAuthor.setDeathYear(1837);
             Author author = valueOfAuthor(inputAuthor);
-            authorRepo.add(author);
+            authorService.add(author);
         }
 /*        System.out.println(Storage.authorIndex);
         System.out.println(Storage.authors.length);*/
@@ -63,9 +67,9 @@ public class LibraryDemo {
         book1.setAuthors(new Author[]{author});
         book2.setAuthors(new Author[]{author});
 
-        bookRepo.add(book1);
-        bookRepo.add(book2);
-        authorRepo.add(author);
+        bookService.add(book1);
+        bookService.add(book2);
+        authorService.add(author);
     }
 
     private static Book valueOfForPrintedBook(InputBook inputBook) {

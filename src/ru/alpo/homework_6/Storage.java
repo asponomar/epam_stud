@@ -56,9 +56,8 @@ public final class Storage {
 
         if (authorIndex % (CAPACITY) == 0 && authorIndex != 0) {
             increaseAuthorsStorage();
-        } else {
-            authors[authorIndex] = author;
         }
+        authors[authorIndex] = author;
         increaseAuthorIndex();
         authorId++;
     }
@@ -68,9 +67,8 @@ public final class Storage {
 
         if (bookIndex % (CAPACITY) == 0 && authorIndex != 0) {
             increaseBooksStorage();
-        } else {
-            books[bookIndex] = book;
         }
+        books[bookIndex] = book;
         Storage.increaseBookIndex();
         bookId++;
     }

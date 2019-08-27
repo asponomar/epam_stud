@@ -1,6 +1,7 @@
 package ru.alpo.homework_6.author.domain;
 
-import ru.alpo.homework_6.book.domain.Book;
+import ru.alpo.homework_6.*;
+import ru.alpo.homework_6.book.domain.*;
 
 public class Author {
     private Long id;
@@ -62,7 +63,7 @@ public class Author {
     public String toString() {
         return "Author{" +
                 "id =" + id +
-                ", name = '" + lastName + " "+ name +'\'' +
+                ", name = '" + lastName + " " + name + '\'' +
                 ", birthYear = " + birthYear +
                 ", deathYear = " + deathYear +
                 '}';
@@ -76,5 +77,22 @@ public class Author {
         if (isLiving()) {
             return birthYear + " - now";
         } else return birthYear + " - " + deathYear;
+    }
+
+    public boolean withoutBooks() {
+        int booksCount = 0;
+        for (Book b : books) {
+            if (b != null) booksCount++;
+        }
+        if (booksCount == 0) return true;
+        else return false;
+    }
+
+    public void deleteBook(Book book) {
+        for (Book b : books) {
+            if (b != null) {
+                Storage.removeBook(book);
+            }
+        }
     }
 }

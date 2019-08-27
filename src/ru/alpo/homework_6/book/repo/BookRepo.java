@@ -11,4 +11,5 @@ public interface BookRepo {
 
     Long add(Book book);
 
+    Book[] findBooksByAuthorAsArray(long id);
 }

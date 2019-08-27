@@ -11,4 +11,6 @@ public interface AuthorRepo {
 
     Long add(Author author);
 
+    Author[] findAuthorsByBook(long id);
+
 }

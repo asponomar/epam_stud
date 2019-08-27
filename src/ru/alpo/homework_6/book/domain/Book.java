@@ -1,5 +1,6 @@
 package ru.alpo.homework_6.book.domain;
 
+import ru.alpo.homework_6.*;
 import ru.alpo.homework_6.author.domain.Author;
 
 public class Book {
@@ -78,6 +79,23 @@ public class Book {
             }
             default:
                 return "Genre is unknown";
+        }
+    }
+
+    public boolean withoutAuthors() {
+        int authorsCount = 0;
+        for (Author a : authors) {
+            if (a != null) authorsCount++;
+        }
+        if (authorsCount == 0) return true;
+        else return false;
+    }
+
+    public void deleteAuthor(Author author) {
+        for (Author a : authors) {
+            if (a != null) {
+                Storage.removeAuthor(a);
+            }
         }
     }
 }
