@@ -1,24 +1,51 @@
-package ru.alpo.homework_4;
+package ru.alpo.homework_8;
 
-import static ru.alpo.homework_4.Library.*;
+import ru.alpo.homework_8.author.*;
+import ru.alpo.homework_8.author.domain.*;
+import ru.alpo.homework_8.author.repo.*;
+import ru.alpo.homework_8.author.service.*;
+import ru.alpo.homework_8.book.*;
+import ru.alpo.homework_8.book.domain.*;
+import ru.alpo.homework_8.book.repo.*;
+import ru.alpo.homework_8.book.service.*;
+
 
 public class LibraryDemo {
     public static void main(String[] args) {
-        Library library = new Library();
-        initData(library);
-        printAuthors();
-        printBooks();
+
+        String storageType = "collection";
+        BookRepo bookRepo = null;
+        AuthorRepo authorRepo = null;
+
+        if (storageType.equals("arrays")){
+            bookRepo = new BookRepoArray();
+            authorRepo = new AuthorRepoArray();
+        } else if (storageType.equals("collection")){
+            bookRepo = new BookRepoCollection();
+            authorRepo = new AuthorRepoCollection();
+        }
+
+        AuthorService authorService = new AuthorServiceImpl(authorRepo, bookRepo);
+        BookService bookService = new BookServiceImpl(bookRepo);
+        initData(bookService, authorService);
+
+        authorRepo.print();
+        bookRepo.print();
+        System.out.println(authorRepo.count());
+        System.out.println(bookRepo.count());
+
+
     }
 
-    private static void initData(Library library) {
-        for (int i = 0; i < 0; i++) {
+    private static void initData(BookService bookService, AuthorService authorService) {
+        for (int i = 0; i < 21; i++) {
             InputAuthor inputAuthor = new InputAuthor();
             inputAuthor.setName("Alexander");
             inputAuthor.setLastName("One more Pushkin");
             inputAuthor.setBirthYear(1799);
             inputAuthor.setDeathYear(1837);
             Author author = valueOfAuthor(inputAuthor);
-            addAuthor(author);
+            authorService.add(author);
         }
 /*        System.out.println(ArrayStorage.authorIndex);
         System.out.println(ArrayStorage.authors.length);*/
@@ -38,6 +65,7 @@ public class LibraryDemo {
 
         InputAuthor inputAuthor1 = new InputAuthor();
         inputAuthor1.setLastName("Pushkin");
+        inputAuthor1.setName("Alexander");
         inputAuthor1.setBirthYear(1799);
         Author author = valueOfAuthor(inputAuthor1);
         author.setBooks(new Book[]{book1, book2});
@@ -45,9 +73,9 @@ public class LibraryDemo {
         book1.setAuthors(new Author[]{author});
         book2.setAuthors(new Author[]{author});
 
-        addBook(book1);
-        addBook(book2);
-        addAuthor(author);
+        bookService.add(book1);
+        bookService.add(book2);
+        authorService.add(author);
     }
 
     private static Book valueOfForPrintedBook(InputBook inputBook) {
