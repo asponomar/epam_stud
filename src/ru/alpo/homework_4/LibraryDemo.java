@@ -21,7 +21,7 @@ public class LibraryDemo {
             addAuthor(author);
         }
 /*        System.out.println(Storage.authorIndex);
-        System.out.println(Storage.authors.length);*/
+        System.out.println(Storage.authorsArray.length);*/
 
 
         InputBook inputBook1 = new InputBook();

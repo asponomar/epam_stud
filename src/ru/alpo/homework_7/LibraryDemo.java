@@ -1,18 +1,13 @@
-package ru.alpo.homework_6;
+package ru.alpo.homework_7;
 
-import ru.alpo.homework_6.author.domain.Author;
-import ru.alpo.homework_6.author.repo.AuthorRepo;
-import ru.alpo.homework_6.author.repo.AuthorRepoArray;
-import ru.alpo.homework_6.author.InputAuthor;
-import ru.alpo.homework_6.author.service.*;
-import ru.alpo.homework_6.book.*;
-import ru.alpo.homework_6.book.domain.Book;
-import ru.alpo.homework_6.book.domain.BookGenre;
-import ru.alpo.homework_6.book.domain.HandWrittenBook;
-import ru.alpo.homework_6.book.domain.PrintedBook;
-import ru.alpo.homework_6.book.repo.BookRepo;
-import ru.alpo.homework_6.book.repo.BookRepoArray;
-import ru.alpo.homework_6.book.service.*;
+import ru.alpo.homework_7.author.*;
+import ru.alpo.homework_7.author.domain.*;
+import ru.alpo.homework_7.author.repo.*;
+import ru.alpo.homework_7.author.service.*;
+import ru.alpo.homework_7.book.*;
+import ru.alpo.homework_7.book.domain.*;
+import ru.alpo.homework_7.book.repo.*;
+import ru.alpo.homework_7.book.service.*;
 
 
 public class LibraryDemo {
@@ -20,7 +15,7 @@ public class LibraryDemo {
         BookRepo bookRepo = new BookRepoArray();
         AuthorRepo authorRepo = new AuthorRepoArray();
 
-        AuthorService authorService = new AuthroServiceImpl(authorRepo, bookRepo);
+        AuthorService authorService = new AuthorServiceImpl(authorRepo, bookRepo);
         BookService bookService = new BookServiceImpl(bookRepo, authorRepo);
         initData(bookService, authorService);
         authorRepo.print();
