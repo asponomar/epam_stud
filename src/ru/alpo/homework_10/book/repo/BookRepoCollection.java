@@ -2,11 +2,12 @@ package ru.alpo.homework_10.book.repo;
 
 import ru.alpo.homework_10.author.domain.*;
 import ru.alpo.homework_10.book.domain.*;
+import ru.alpo.homework_10.repo.*;
 import ru.alpo.homework_10.storage.*;
 
 import java.util.*;
 
-public class BookRepoCollection implements BookRepo {
+public class BookRepoCollection implements Repo<Book> {
     @Override
     public int count() {
         return CollectionStorage.getTotalBooks();
@@ -33,16 +34,16 @@ public class BookRepoCollection implements BookRepo {
     }
 
     @Override
-    public Book[] findBooksByAuthorAsArray(long authorId) {
-        return findBooksByAuthorAsList(authorId).toArray(new Book[0]);
+    public Book[] findAsArray(long authorId) {
+        return findAsList(authorId).toArray(new Book[0]);
     }
 
     @Override
-    public List<Book> findBooksByAuthorAsList(long authorId) {
+    public List<Book> findAsList(long authorId) {
         List<Book> found = new ArrayList<>();
 
         for (Book b : CollectionStorage.getAllBooks()) {
-            Author authors[] = b.getAuthors();
+            List<Author> authors = b.getAuthors();
             for (Author a : authors) {
                 if (a != null && authorId == a.getId()) {
                     found.add(b);

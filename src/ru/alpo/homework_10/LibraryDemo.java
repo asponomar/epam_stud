@@ -25,7 +25,7 @@ public class LibraryDemo {
             authorRepo = new AuthorRepoCollection();
         }
 
-        AuthorService authorService = new AuthorServiceImpl(authorRepo, bookRepo);
+        AuthorService authorService = new AuthorService(authorRepo, bookRepo);
         BookService bookService = new BookServiceImpl(bookRepo);
         initData(bookService, authorService);
 

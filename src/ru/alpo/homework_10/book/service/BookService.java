@@ -1,20 +1,47 @@
 package ru.alpo.homework_10.book.service;
 
 import ru.alpo.homework_10.book.domain.*;
+import ru.alpo.homework_10.book.repo.*;
+import ru.alpo.homework_10.repo.*;
+import ru.alpo.homework_10.service.*;
 
 import java.util.*;
 
-public interface BookService {
+public class BookService implements Service<Book> {
 
-    int count();
+    private Repo<Book> bookRepo;
 
-    void print();
+    public BookService(Repo<Book> bookRepo) {
+        this.bookRepo = bookRepo;
+    }
 
-    void delete(Book book);
+    @Override
+    public int count() {
+        return bookRepo.count();
+    }
 
-    Long add(Book book);
+    @Override
+    public void print() {
+        bookRepo.print();
+    }
 
-    Book[] findBooksByAuthorAsArray(long authorId);
+    @Override
+    public void delete(Book book) {
+        bookRepo.delete(book);
+    }
 
-    List<Book> findBooksByAuthorAsList(long authorId);
+    @Override
+    public Long add(Book book) {
+        return bookRepo.add(book);
+    }
+
+    @Override
+    public Book[] findAsArray(long authorId) {
+        return bookRepo.findAsArray(authorId);
+    }
+
+    @Override
+    public List<Book> findAsList(long authorId) {
+        return bookRepo.findAsList(authorId);
+    }
 }

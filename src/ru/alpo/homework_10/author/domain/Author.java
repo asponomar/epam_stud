@@ -3,13 +3,15 @@ package ru.alpo.homework_10.author.domain;
 import ru.alpo.homework_10.book.domain.*;
 import ru.alpo.homework_10.storage.*;
 
+import java.util.*;
+
 public class Author {
     private Long id;
     private String name;
     private String lastName;
     private int birthYear;
     private Integer deathYear;
-    private Book[] books;
+    private List<Book> books = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -51,11 +53,11 @@ public class Author {
         this.deathYear = deathYear;
     }
 
-    public Book[] getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(Book[] books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
 
@@ -84,14 +86,14 @@ public class Author {
         for (Book b : books) {
             if (b != null) booksCount++;
         }
-        if (booksCount == 0) return true;
-        else return false;
+        return booksCount == 0;
+
     }
 
     public void deleteBook(Book book) {
         for (Book b : books) {
             if (b != null) {
-                ArrayStorage.removeBook(book);
+                CollectionStorage.removeBook(book);
             }
         }
     }

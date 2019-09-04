@@ -14,6 +14,9 @@ public final class ArrayStorage {
     private static Author[] authors = new Author[CAPACITY];
     private static int authorIndex = 0;
 
+    private ArrayStorage() {
+    }
+
     //-----------Books---------------------------------------------------------
 
     public static Book[] getBooks() {
