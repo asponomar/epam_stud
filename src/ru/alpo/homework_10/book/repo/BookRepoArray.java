@@ -4,6 +4,7 @@ import ru.alpo.homework_10.author.domain.*;
 import ru.alpo.homework_10.book.domain.*;
 import ru.alpo.homework_10.repo.*;
 import ru.alpo.homework_10.storage.*;
+
 import java.util.*;
 
 public class BookRepoArray implements Repo<Book> {
@@ -31,6 +32,16 @@ public class BookRepoArray implements Repo<Book> {
     public Long add(Book book) {
         ArrayStorage.addBook(book);
         return book.getId();
+    }
+
+    @Override
+    public Book getById(long bookId) {
+        List<Book> books = CollectionStorage.books;
+        Book book = new Book();
+        for (Book b : books) {
+            book = b.getId() == bookId ? book : null;
+        }
+        return book;
     }
 
     @Override

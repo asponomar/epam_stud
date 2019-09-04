@@ -36,6 +36,11 @@ public class BookService implements Service<Book> {
     }
 
     @Override
+    public Book getById(long id) {
+        return bookRepo.getById(id);
+    }
+
+    @Override
     public Book[] findAsArray(long authorId) {
         return bookRepo.findAsArray(authorId);
     }

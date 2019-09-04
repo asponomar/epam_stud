@@ -52,6 +52,11 @@ public class AuthorService implements Service<Author> {
     }
 
     @Override
+    public Author getById(long id) {
+        return authorRepo.getById(id);
+    }
+
+    @Override
     public Author[] findAsArray(long bookId) {
         return authorRepo.findAsArray(bookId);
     }

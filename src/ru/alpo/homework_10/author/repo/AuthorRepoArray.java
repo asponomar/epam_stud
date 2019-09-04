@@ -35,6 +35,16 @@ public class AuthorRepoArray implements Repo<Author> {
     }
 
     @Override
+    public Author getById(long AuthorId) {
+        List<Author> authors = CollectionStorage.authors;
+        Author author = new Author();
+        for (Author a: authors) {
+            author = a.getId() == AuthorId ? author : null;
+        }
+        return author;
+    }
+
+    @Override
     public Author[] findAsArray(long bookId) {
         return findAsList(bookId).toArray(new Author[0]);
     }

@@ -34,6 +34,17 @@ public class BookRepoCollection implements Repo<Book> {
     }
 
     @Override
+    public Book getById(long bookId) {
+        Iterator<Book> books = CollectionStorage.books.iterator();
+        Book book = new Book();
+        while (books.hasNext()) {
+            boolean idsMatches = books.next().getId().equals(bookId);
+            book = idsMatches ? book : null;
+        }
+        return book;
+    }
+
+    @Override
     public Book[] findAsArray(long authorId) {
         return findAsList(authorId).toArray(new Book[0]);
     }

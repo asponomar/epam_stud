@@ -11,7 +11,10 @@ public interface Repo<T> {
 
     Long add(T t);
 
+    T getById (long id);
+
     T[] findAsArray(long id);
 
     List<T> findAsList(long id);
+
 }

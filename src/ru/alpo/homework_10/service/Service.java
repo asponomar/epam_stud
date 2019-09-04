@@ -12,6 +12,8 @@ public interface Service<T> {
 
     Long add(T t);
 
+    T getById (long id);
+
     T[] findAsArray(long Id);
 
     List<T> findAsList(long Id);

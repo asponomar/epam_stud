@@ -151,16 +151,6 @@ public final class ArrayStorage {
         authors = newAuthors;
     }
 
-    public static Author searchAuthorById(Long searchAuthorId) {
-        Author author = new Author();
-        for (int i = 0; i < authors.length; i++) {
-            if (searchAuthorId.equals(author.getId())) {
-                author = authors[i];
-            }
-        }
-        return author;
-    }
-
     public static void searchAuthorByLastName(String searchLastName) {
         for (Author author : authors) {
             if (searchLastName.equals(author.getLastName())) {
