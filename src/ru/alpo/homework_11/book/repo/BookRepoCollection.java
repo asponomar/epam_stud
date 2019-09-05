@@ -34,7 +34,7 @@ public class BookRepoCollection implements BookRepo {
     }
 
     @Override
-    public Book getById(long bookId) {
+    public Book getById(Long bookId) {
         Iterator<Book> books = CollectionStorage.books.iterator();
         Book book = new Book();
         while (books.hasNext()) {
@@ -45,12 +45,12 @@ public class BookRepoCollection implements BookRepo {
     }
 
     @Override
-    public Book[] findAsArray(long authorId) {
+    public Book[] findAsArray(Long authorId) {
         return findAsList(authorId).toArray(new Book[0]);
     }
 
     @Override
-    public List<Book> findAsList(long authorId) {
+    public List<Book> findAsList(Long authorId) {
         List<Book> found = new ArrayList<>();
 
         for (Book b : CollectionStorage.getAllBooks()) {
@@ -66,12 +66,12 @@ public class BookRepoCollection implements BookRepo {
     }
 
     @Override
-    public Book[] findBooksByAuthorAsArray(long id) {
+    public Book[] findBooksByAuthorAsArray(Long id) {
         return new Book[0];
     }
 
     @Override
-    public List<Book> findBooksByAuthorAsList(long id) {
+    public List<Book> findBooksByAuthorAsList(Long id) {
         return null;
     }
 }

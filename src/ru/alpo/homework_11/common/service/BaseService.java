@@ -1,6 +1,6 @@
 package ru.alpo.homework_11.common.service;
 
-public interface BaseService<T> {
+public interface BaseService<T, ID> {
 
     int count();
 
@@ -10,6 +10,6 @@ public interface BaseService<T> {
 
     Long add(T t);
 
-    T getById(long id);
+    T getById(ID id);
 
 }

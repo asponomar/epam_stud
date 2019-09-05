@@ -2,7 +2,7 @@ package ru.alpo.homework_11.common.repo;
 
 import java.util.*;
 
-public interface BaseRepo<T> {
+public interface BaseRepo<T, ID> {
     int count();
 
     void print();
@@ -11,10 +11,10 @@ public interface BaseRepo<T> {
 
     Long add(T t);
 
-    T getById(long id);
+    T getById(ID id);
 
-    T[] findAsArray(long id);
+    T[] findAsArray(ID id);
 
-    List<T> findAsList(long id);
+    List<T> findAsList(ID id);
 
 }

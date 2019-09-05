@@ -1,7 +1,9 @@
 package ru.alpo.homework_11.author.service;
 
 import ru.alpo.homework_11.author.domain.*;
+import ru.alpo.homework_11.author.repo.*;
 import ru.alpo.homework_11.book.domain.*;
+import ru.alpo.homework_11.book.repo.*;
 import ru.alpo.homework_11.common.repo.*;
 import ru.alpo.homework_11.storage.*;
 
@@ -9,10 +11,10 @@ import java.util.*;
 
 public class AuthorServiceImpl implements AuthorService {
 
-    private BaseRepo<Author> authorRepo;
-    private BaseRepo<Book> bookRepo;
+    private AuthorRepo authorRepo;
+    private BookRepo bookRepo;
 
-    public AuthorServiceImpl(BaseRepo<Author> authorRepo, BaseRepo<Book> bookRepo) {
+    public AuthorServiceImpl(AuthorRepo authorRepo, BookRepo bookRepo) {
         this.authorRepo = authorRepo;
         this.bookRepo = bookRepo;
     }
@@ -49,17 +51,17 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author getById(long id) {
+    public Author getById(Long id) {
         return authorRepo.getById(id);
     }
 
     @Override
-    public Author[] findAuthorByBookAsArray(long bookId) {
+    public Author[] findAuthorByBookAsArray(Long bookId) {
         return authorRepo.findAsArray(bookId);
     }
 
     @Override
-    public List findAuthorByBookAsAsList(long bookId) {
+    public List findAuthorByBookAsAsList(Long bookId) {
         List<Author> found = new ArrayList<>();
 
         for (Author a : CollectionStorage.getAllAuthors()) {

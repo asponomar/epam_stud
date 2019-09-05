@@ -1,15 +1,16 @@
 package ru.alpo.homework_11.book.service;
 
 import ru.alpo.homework_11.book.domain.*;
+import ru.alpo.homework_11.book.repo.*;
 import ru.alpo.homework_11.common.repo.*;
 
 import java.util.*;
 
 public class BookServiceImpl implements BookService {
 
-    private BaseRepo<Book> bookRepo;
+    private BookRepo bookRepo;
 
-    public BookServiceImpl(BaseRepo<Book> bookRepo) {
+    public BookServiceImpl(BookRepo bookRepo) {
         this.bookRepo = bookRepo;
     }
 
@@ -34,17 +35,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getById(long id) {
+    public Book getById(Long id) {
         return bookRepo.getById(id);
     }
 
     @Override
-    public Book[] findBooksByAuthorAsArray(long authorId) {
+    public Book[] findBooksByAuthorAsArray(Long authorId) {
         return bookRepo.findAsArray(authorId);
     }
 
     @Override
-    public List<Book> findBooksByAuthorAsList(long authorId) {
+    public List<Book> findBooksByAuthorAsList(Long authorId) {
         return bookRepo.findAsList(authorId);
     }
 

@@ -5,9 +5,9 @@ import ru.alpo.homework_11.common.repo.*;
 
 import java.util.*;
 
-public interface BookRepo extends BaseRepo<Book> {
+public interface BookRepo extends BaseRepo<Book, Long> {
 
-    Book[] findBooksByAuthorAsArray(long id);
+    Book[] findBooksByAuthorAsArray(Long id);
 
-    List<Book> findBooksByAuthorAsList(long id);
+    List<Book> findBooksByAuthorAsList(Long id);
 }

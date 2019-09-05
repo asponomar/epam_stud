@@ -34,7 +34,7 @@ public class AuthorRepoCollection implements AuthorRepo {
     }
 
     @Override
-    public Author getById(long AuthorId) {
+    public Author getById(Long AuthorId) {
         Iterator<Author> authors = CollectionStorage.authors.iterator();
         Author author = new Author();
         while (authors.hasNext()) {
@@ -45,12 +45,12 @@ public class AuthorRepoCollection implements AuthorRepo {
     }
 
     @Override
-    public Author[] findAsArray(long bookId) {
+    public Author[] findAsArray(Long bookId) {
         return findAsList(bookId).toArray(new Author[0]);
     }
 
     @Override
-    public List<Author> findAsList(long bookId) {
+    public List<Author> findAsList(Long bookId) {
         List<Author> found = new ArrayList<>();
 
         for (Author a : CollectionStorage.getAllAuthors()) {
@@ -67,12 +67,12 @@ public class AuthorRepoCollection implements AuthorRepo {
     }
 
     @Override
-    public Author[] findAuthorsByBookAsArray(long id) {
+    public Author[] findAuthorsByBookAsArray(Long id) {
         return new Author[0];
     }
 
     @Override
-    public List<Author> findAuthorsByBookAsList(long id) {
+    public List<Author> findAuthorsByBookAsList(Long id) {
         return null;
     }
 }

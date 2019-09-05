@@ -5,10 +5,10 @@ import ru.alpo.homework_11.common.repo.*;
 
 import java.util.*;
 
-public interface AuthorRepo extends BaseRepo<Author> {
+public interface AuthorRepo extends BaseRepo<Author, Long> {
 
-    Author[] findAuthorsByBookAsArray(long id);
+    Author[] findAuthorsByBookAsArray(Long id);
 
-    List<Author> findAuthorsByBookAsList(long id);
+    List<Author> findAuthorsByBookAsList(Long id);
 
 }

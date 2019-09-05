@@ -5,9 +5,9 @@ import ru.alpo.homework_11.common.service.*;
 
 import java.util.*;
 
-public interface BookService extends BaseService<Book> {
+public interface BookService extends BaseService<Book, Long> {
 
-    Book[] findBooksByAuthorAsArray(long authorId);
+    Book[] findBooksByAuthorAsArray(Long authorId);
 
-    List<Book> findBooksByAuthorAsList(long authorId);
+    List<Book> findBooksByAuthorAsList(Long authorId);
 }
