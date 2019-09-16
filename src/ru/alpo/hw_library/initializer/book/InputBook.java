@@ -1,4 +1,4 @@
-package ru.alpo.hw_library.book;
+package ru.alpo.hw_library.initializer.book;
 
 import ru.alpo.hw_library.book.domain.*;
 

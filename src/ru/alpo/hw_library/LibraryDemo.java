@@ -1,42 +1,42 @@
 package ru.alpo.hw_library;
 
-import ru.alpo.hw_library.author.*;
 import ru.alpo.hw_library.author.domain.*;
 import ru.alpo.hw_library.author.repo.*;
 import ru.alpo.hw_library.author.service.*;
-import ru.alpo.hw_library.book.*;
 import ru.alpo.hw_library.book.domain.*;
 import ru.alpo.hw_library.book.repo.*;
 import ru.alpo.hw_library.book.service.*;
+import ru.alpo.hw_library.initializer.author.*;
+import ru.alpo.hw_library.initializer.book.*;
+import ru.alpo.hw_library.initializer.serviceinitializer.*;
+import ru.alpo.hw_library.storage.*;
+
+import static ru.alpo.hw_library.storage.StorageType.ARRAY;
+import static ru.alpo.hw_library.storage.StorageType.COLLECTION;
 
 
 public class LibraryDemo {
     public static void main(String[] args) {
 
-        String storageType = "collection";
-        BookRepo bookRepo = null;
-        AuthorRepo authorRepo = null;
+        StorageType storageType = COLLECTION;
+        ServiceInitializer serviceInitializer = new ServiceInitializer();
+        serviceInitializer.initServices(storageType);
 
-        if (storageType.equals("arrays")){
-            bookRepo = new BookRepoArray();
-            authorRepo = new AuthorRepoArray();
-        } else if (storageType.equals("collection")){
-            bookRepo = new BookRepoCollection();
-            authorRepo = new AuthorRepoCollection();
-        }
+        ServiceHolder serviceHolder = new ServiceInitializer().initServices(storageType);
 
-        AuthorServiceImpl authorService = new AuthorServiceImpl(authorRepo, bookRepo);
-        BookServiceImpl bookService = new BookServiceImpl(bookRepo);
+        BookService bookService = serviceHolder.getBookService();
+        AuthorService authorService = serviceHolder.getAuthorService();
+
         initData(bookService, authorService);
 
-        authorRepo.print();
-        bookRepo.print();
-        System.out.println(authorRepo.count());
-        System.out.println(bookRepo.count());
+        authorService.print();
+        bookService.print();
+        System.out.println(authorService.count());
+        System.out.println(bookService.count());
 
     }
 
-    private static void initData(BookServiceImpl bookService, AuthorServiceImpl authorService) {
+    private static void initData(BookService bookService, AuthorService authorService) {
         for (int i = 0; i < 21; i++) {
             InputAuthor inputAuthor = new InputAuthor();
             inputAuthor.setName("Alexander");

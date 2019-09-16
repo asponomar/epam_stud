@@ -1,4 +1,4 @@
-package ru.alpo.hw_library.author;
+package ru.alpo.hw_library.initializer.author;
 
 public class InputAuthor {
     private long id;
