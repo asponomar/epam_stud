@@ -12,6 +12,7 @@ import ru.alpo.hw_library.initializer.datainitializer.*;
 import ru.alpo.hw_library.initializer.serviceinitializer.*;
 import ru.alpo.hw_library.storage.*;
 
+import static ru.alpo.hw_library.initializer.datainitializer.DataInitializerType.IN_MEMORY;
 import static ru.alpo.hw_library.storage.StorageType.ARRAY;
 import static ru.alpo.hw_library.storage.StorageType.COLLECTION;
 
@@ -20,10 +21,11 @@ public class LibraryDemo {
     public static void main(String[] args) {
 
         StorageType storageType = COLLECTION;
+        DataInitializerType dataInitializerType = IN_MEMORY;
 
         ServiceHolder serviceHolder = new ServiceInitializer().initServices(storageType);
 
-        InMemoryInitializer dataInitalizer = new InMemoryInitializer(serviceHolder);
+        BasicDataInitalizer dataInitalizer = DataInitializerFactory.getDataInitializer(dataInitializerType, serviceHolder);
 
         BookService bookService = serviceHolder.getBookService();
         AuthorService authorService = serviceHolder.getAuthorService();
