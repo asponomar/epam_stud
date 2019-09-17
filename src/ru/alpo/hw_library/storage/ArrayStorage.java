@@ -2,6 +2,7 @@ package ru.alpo.hw_library.storage;
 
 import ru.alpo.hw_library.author.domain.*;
 import ru.alpo.hw_library.book.domain.*;
+import ru.alpo.hw_library.common.utils.*;
 
 import java.util.*;
 
@@ -39,7 +40,7 @@ public final class ArrayStorage {
 
     public static void increaseBooksArrayStorage() {
         Book[] books = new Book[bookIndex + CAPACITY];
-        System.arraycopy(ArrayStorage.books, 0, books, 0, ArrayStorage.books.length);
+        ArrayUtils.copyElements(ArrayStorage.books, books);
         ArrayStorage.books = books;
     }
 
@@ -67,13 +68,7 @@ public final class ArrayStorage {
          */
 
         Book[] newBooks = new Book[books.length];
-        int index = 0;
-        for (Book b : books) {
-            if (b != null) {
-                newBooks[index] = b;
-                index++;
-            }
-        }
+        ArrayUtils.copyNotNullElements(books, newBooks);
 
         /**
          *  [0] = A
@@ -106,7 +101,7 @@ public final class ArrayStorage {
 
     public static void increaseAuthorsArrayStorage() {
         Author[] authors = new Author[authorIndex + CAPACITY];
-        System.arraycopy(ArrayStorage.authors, 0, authors, 0, ArrayStorage.authors.length);
+        ArrayUtils.copyElements(ArrayStorage.authors, authors);
         ArrayStorage.authors = authors;
     }
 
@@ -134,13 +129,7 @@ public final class ArrayStorage {
          */
 
         Author[] newAuthors = new Author[ArrayStorage.authors.length];
-        int index = 0;
-        for (Author a : authors) {
-            if (a != null) {
-                newAuthors[index] = a;
-                index++;
-            }
-        }
+        ArrayUtils.copyNotNullElements(authors, newAuthors);
 
         /**
          *  [0] = A
