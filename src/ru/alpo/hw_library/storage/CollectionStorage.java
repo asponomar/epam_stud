@@ -28,9 +28,11 @@ public final class CollectionStorage {
     }
 
     public static void removeBook(Book book) {
-        for (Book b : books) {
-            if (b.getId().equals(book.getId())) {
-                books.remove(b);
+        Iterator<Book> bookIterator = books.iterator();
+        while (bookIterator.hasNext()) {
+            boolean idsMatches = bookIterator.next().getId().equals(book.getId());
+            if (idsMatches) {
+                bookIterator.remove();
                 break;
             }
         }
@@ -51,11 +53,11 @@ public final class CollectionStorage {
     }
 
     public static void removeAuthor(Author author) {
-        Iterator<Author> authors = CollectionStorage.authors.iterator();
-        while (authors.hasNext()) {
-            boolean idsMatches = authors.next().getId().equals(author.getId());
+        Iterator<Author> authorIterator = authors.iterator();
+        while (authorIterator.hasNext()) {
+            boolean idsMatches = authorIterator.next().getId().equals(author.getId());
             if (idsMatches) {
-                authors.remove();
+                authorIterator.remove();
                 break;
             }
         }
